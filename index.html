@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portal de Tableros · O&amp;M GPM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --azul:#0b3a78;
+    --azul-osc:#082a57;
+    --celeste:#1f8fd6;
+    --naranja:#f28c28;
+    --verde:#2e9e6a;
+    --fondo:#f3f6fa;
+    --texto:#1b2635;
+    --suave:#5b6b80;
+    --borde:#dfe6ef;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--fondo);color:var(--texto);line-height:1.45}
+
+  /* ---------- Banner ---------- */
+  header{position:relative}
+  .hero{position:relative;width:100%;aspect-ratio:1128/410;max-height:460px;
+        background:url("banner.jpg") center/cover no-repeat;overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:0;
+        background:linear-gradient(180deg,rgba(255,255,255,0) 55%,var(--fondo) 100%)}
+  .hero-titulo{position:absolute;left:50%;top:9%;transform:translateX(-50%);text-align:center;z-index:1;width:min(90%,720px)}
+  .hero-titulo h1{font-weight:800;letter-spacing:.5px;color:#0d0d0d;font-size:clamp(1.25rem,3.6vw,2.6rem);line-height:1.1;
+        text-shadow:0 1px 10px rgba(255,255,255,.85)}
+  .hero-titulo{z-index:3}
+  .hero-titulo p{margin-top:.3rem;font-size:clamp(.85rem,1.8vw,1.35rem);color:#1d2b3d;font-weight:500;
+        text-shadow:0 1px 8px rgba(255,255,255,.9)}
+
+  /* ---------- Contenido ---------- */
+  main{max-width:1180px;margin:-1.5rem auto 0;padding:0 1.25rem 3rem;position:relative;z-index:2}
+  .intro{background:#fff;border:1px solid var(--borde);border-radius:14px;padding:1rem 1.25rem;
+        display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;align-items:center;justify-content:space-between;
+        box-shadow:0 6px 20px rgba(11,58,120,.06)}
+  .intro strong{color:var(--azul)}
+  .intro span{color:var(--suave);font-size:.92rem}
+
+  section{margin-top:2.25rem}
+  .seccion-cab{display:flex;align-items:center;gap:.7rem;margin-bottom:1rem}
+  .seccion-cab .barra{width:6px;height:28px;border-radius:3px;background:var(--c,var(--azul))}
+  .seccion-cab h2{font-size:1.3rem;font-weight:700;color:var(--azul-osc)}
+  .seccion-cab .cant{white-space:nowrap;font-size:.8rem;color:var(--suave);background:#e8eef6;border-radius:99px;padding:.15rem .6rem}
+
+  .grilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.1rem}
+
+  .card{--c:var(--azul);display:flex;flex-direction:column;background:#fff;border:1px solid var(--borde);border-radius:16px;
+        padding:1.35rem 1.35rem 1.1rem;text-decoration:none;color:inherit;position:relative;overflow:hidden;
+        transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+  .card::before{content:"";position:absolute;left:0;top:0;right:0;height:4px;background:var(--c)}
+  .card:hover,.card:focus-visible{transform:translateY(-4px);box-shadow:0 14px 30px rgba(11,58,120,.14);border-color:var(--c);outline:none}
+  .card-top{display:flex;align-items:center;gap:.9rem;margin-bottom:.8rem}
+  .icono{flex:0 0 52px;height:52px;border-radius:12px;display:grid;place-items:center;
+        background:color-mix(in srgb,var(--c) 12%,#fff);color:var(--c)}
+  .icono svg{width:28px;height:28px}
+  .num{font-size:.75rem;font-weight:600;color:var(--suave);text-transform:uppercase;letter-spacing:.6px}
+  .card h3{font-size:1.12rem;font-weight:700;color:var(--azul-osc);line-height:1.25}
+  .card p{color:var(--suave);font-size:.93rem;flex:1}
+  .card-pie{margin-top:1rem;padding-top:.8rem;border-top:1px dashed var(--borde);display:flex;justify-content:space-between;align-items:center}
+  .tag{font-size:.75rem;color:var(--suave)}
+  .ir{font-weight:600;font-size:.9rem;color:var(--c);display:flex;align-items:center;gap:.35rem}
+  .ir svg{width:16px;height:16px;transition:transform .18s}
+  .card:hover .ir svg{transform:translateX(4px)}
+
+  @media (max-width:700px){
+    .hero-titulo{position:static;transform:none;width:auto;padding:.4rem 1rem 1.6rem;background:var(--fondo)}
+    .hero-titulo h1{font-size:1.35rem}
+    .hero::after{background:none}
+    main{margin-top:0}
+  }
+  footer{max-width:1180px;margin:0 auto;padding:1.25rem;border-top:1px solid var(--borde);
+        color:var(--suave);font-size:.82rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hero" role="img" aria-label="Planta compresora — Energía Argentina y tgs"></div>
+  <div class="hero-titulo">
+    <h1>OPERACIÓN &amp; MANTENIMIENTO</h1>
+    <p>Energía Argentina – TGS</p>
+  </div>
+</header>
+
+<main>
+  <div class="intro">
+    <div><strong>Portal de tableros de gestión · Gasoducto Perito Francisco Pascasio Moreno</strong><br>
+      <span>Seleccione un bloque para ingresar al tablero correspondiente.</span></div>
+    <span id="resumen"></span>
+  </div>
+
+  <div id="secciones"></div>
+</main>
+
+<footer>
+  <span>tgs · Coordinación Operativa y de Gestión – Gasoductos de Terceros</span>
+  <span>Datos actualizados mensualmente</span>
+</footer>
+
+<script>
+/* =====================================================================
+   CONFIGURACIÓN DE TABLEROS
+   Para agregar un tablero nuevo: copiar una línea { ... } dentro de la
+   sección que corresponda (o crear una sección nueva) y completar.
+   iconos disponibles: actividades, plan, confiabilidad, accidentes,
+   seguridad, ambiente, presupuesto, operacion, documento
+   ===================================================================== */
+const SECCIONES = [
+  {
+    titulo: "Operación y Mantenimiento",
+    color: "#0b3a78",
+    tableros: [
+      { titulo: "Seguimiento de actividades",
+        desc: "Órdenes de mantenimiento del GPM: estado, avance y seguimiento por planta, plan y equipo.",
+        url: "https://gestionoperativa-tgs.github.io/jostt/",
+        icono: "actividades", color: "#0b3a78" },
+      { titulo: "Cumplimiento del Plan de Mantenimiento",
+        desc: "Porcentaje de cumplimiento por plan preventivo y predictivo según su frecuencia.",
+        url: "https://gestionoperativa-tgs.github.io/cumplimiento-gpm/",
+        icono: "plan", color: "#1f8fd6" },
+      { titulo: "Confiabilidad y Disponibilidad",
+        desc: "Turbocompresores y motogeneradores de PC Tratayén y PC Salliqueló, y linepack mensual.",
+        url: "https://gestionoperativa-tgs.github.io/Confydisp/",
+        icono: "confiabilidad", color: "#2e9e6a" },
+    ]
+  },
+  {
+    titulo: "Seguridad",
+    color: "#f28c28",
+    tableros: [
+      { titulo: "Estadística de accidentes",
+        desc: "Indicadores de accidentabilidad de los contratos de O&M del GPM.",
+        url: "https://gestionoperativa-tgs.github.io/estadistica/",
+        icono: "accidentes", color: "#e0662a" },
+      { titulo: "Cumplimiento de actividades de seguridad",
+        desc: "Seguimiento de actividades de seguridad e inspecciones programadas.",
+        url: "https://gestionoperativa-tgs.github.io/segudash/",
+        icono: "seguridad", color: "#f28c28" },
+    ]
+  },
+];
+
+const ICONOS = {
+  actividades:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 3v2h6V3"/><path d="m8.5 12 2 2 4-4"/><path d="M8.5 17.5h7"/></svg>',
+  plan:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/><path d="m9 15 2 2 4-4"/></svg>',
+  confiabilidad:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 13 16.5 8.5"/><path d="M3.5 17a9 9 0 1 1 17 0"/><circle cx="12" cy="13" r="1.5"/><path d="M3 20h18"/></svg>',
+  accidentes:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="5" width="3" height="13"/></svg>',
+  seguridad:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/><path d="m8.5 12 2.5 2.5 4.5-4.5"/></svg>',
+  ambiente:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 4 13c0-6 7-9 16-9 0 9-3 16-9 16Z"/><path d="M4 21c4-4 7-7 11-10"/></svg>',
+  presupuesto:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9.5c-.5-1-1.6-1.5-3-1.5-1.7 0-3 .8-3 2s1.3 1.7 3 2 3 .8 3 2-1.3 2-3 2c-1.4 0-2.5-.5-3-1.5M12 6v2M12 16v2"/></svg>',
+  operacion:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l3-8 6 16 3-8h4"/></svg>',
+  documento:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>'
+};
+const FLECHA='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const cont = document.getElementById('secciones');
+let total = 0;
+
+SECCIONES.forEach(sec => {
+  const el = document.createElement('section');
+  el.innerHTML = `
+    <div class="seccion-cab" style="--c:${sec.color}">
+      <span class="barra"></span><h2>${esc(sec.titulo)}</h2>
+      <span class="cant">${sec.tableros.length} tablero${sec.tableros.length===1?'':'s'}</span>
+    </div>
+    <div class="grilla">
+      ${sec.tableros.map((t,i) => `
+        <a class="card" href="${esc(t.url)}" target="_blank" rel="noopener" style="--c:${t.color||sec.color}">
+          <div class="card-top">
+            <div class="icono">${ICONOS[t.icono]||ICONOS.documento}</div>
+            <div><div class="num">${esc(sec.titulo)} · ${i+1}</div><h3>${esc(t.titulo)}</h3></div>
+          </div>
+          <p>${esc(t.desc)}</p>
+          <div class="card-pie"><span class="tag">Se abre en una pestaña nueva</span>
+            <span class="ir">Abrir tablero ${FLECHA}</span></div>
+        </a>`).join('')}
+    </div>`;
+  cont.appendChild(el);
+  total += sec.tableros.length;
+});
+document.getElementById('resumen').textContent = `${total} tableros · ${SECCIONES.length} áreas`;
+</script>
+</body>
+</html>
